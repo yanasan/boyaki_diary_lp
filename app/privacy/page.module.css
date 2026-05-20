@@ -121,13 +121,15 @@
   margin-bottom: 0;
 }
 
-.section ul {
+.section ul,
+.section ol {
   margin: 0;
   padding-left: 0;
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  counter-reset: ol-counter;
 }
 
 .section li {
@@ -138,12 +140,26 @@
   position: relative;
 }
 
-.section li::before {
+.section ul li::before {
   content: '–';
   position: absolute;
   left: 0;
   color: var(--yellow);
   font-weight: 700;
+}
+
+.section ol li {
+  counter-increment: ol-counter;
+  padding-left: 28px;
+}
+
+.section ol li::before {
+  content: counter(ol-counter) ".";
+  position: absolute;
+  left: 0;
+  color: var(--mute);
+  font-weight: 700;
+  font-size: 13px;
 }
 
 .note {

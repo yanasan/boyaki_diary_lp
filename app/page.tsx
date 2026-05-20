@@ -340,7 +340,7 @@ export default function Home() {
             </div>
           </div>
           <div className={styles.footLinks}>
-            <a href="#">利用規約</a>
+            <a href="/terms">利用規約</a>
             <a href="/privacy">プライバシーポリシー</a>
             <a href="#">お問い合わせ</a>
           </div>
