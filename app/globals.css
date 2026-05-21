@@ -1,21 +1,104 @@
 @import "tailwindcss";
 
 :root {
-  --cream: #FAF5E9;
-  --cream-deep: #F2E9CE;
-  --cream-card: #FFFBEE;
-  --paper: #FFFFFF;
-  --yellow: #FFD84D;
-  --yellow-soft: #FFE89A;
-  --yellow-pale: #FFF4C4;
-  --ink: #14110D;
-  --ink-soft: #2A251E;
-  --mute: #7A6F5C;
-  --line: #E6DBBE;
-  --line-strong: #1a1714;
-  --pink: #FFB3A8;
-  --green: #7FCBA2;
-  --blue: #9FC8E0;
+  /* ── Primary palette — Yellow ─────────────────────── */
+  --color-primary-50:  #FFF9DB;
+  --color-primary-100: #FFF4C4;
+  --color-primary-200: #FFE89A;
+  --color-primary-300: #FFD84D;
+  --color-primary-400: #F0C234;
+  --color-primary-500: #D9A91A;
+  --color-primary-600: #B58A0D;
+  --color-primary-700: #8C6A05;
+  --color-primary-800: #5E4700;
+
+  /* ── Neutral palette — Warm Cream ─────────────────── */
+  --color-neutral-50:  #FFFBEE;
+  --color-neutral-100: #FAF5E9;
+  --color-neutral-200: #F2E9CE;
+  --color-neutral-300: #E6DBBE;
+  --color-neutral-400: #C9BF9D;
+  --color-neutral-500: #7A6F5C;
+  --color-neutral-600: #5C5343;
+  --color-neutral-700: #3F392E;
+  --color-neutral-800: #2A251E;
+  --color-neutral-900: #14110D;
+
+  /* ── Paper ────────────────────────────────────────── */
+  --color-paper: #FFFFFF;
+
+  /* ── Semantic surface roles ───────────────────────── */
+  --color-bg:              var(--color-neutral-100);
+  --color-surface:         var(--color-neutral-100);
+  --color-surface-raised:  var(--color-neutral-50);
+  --color-surface-section: var(--color-neutral-200);
+  --color-surface-inverse: var(--color-neutral-900);
+
+  --color-text:            var(--color-neutral-900);
+  --color-text-soft:       var(--color-neutral-800);
+  --color-text-muted:      var(--color-neutral-500);
+  --color-text-on-inverse: var(--color-neutral-100);
+  --color-text-on-accent:  var(--color-neutral-900);
+
+  --color-border:          var(--color-neutral-300);
+  --color-border-strong:   var(--color-neutral-900);
+
+  /* ── Character accent palette ─────────────────────── */
+  --color-char-penmaru-surface:   #DCE9F5;
+  --color-char-penmaru-accent:    #5A8BB8;
+  --color-char-hohakase-surface:  #E8D9C2;
+  --color-char-hohakase-accent:   #8C6E4A;
+  --color-char-teto-surface:      #E8DAF0;
+  --color-char-teto-accent:       #8B6BA6;
+
+  /* ── Shadow scale ─────────────────────────────────── */
+  --shadow-sm: 0 1px 2px 0 oklch(0% 0 0 / 0.06);
+  --shadow-md: 0 4px 6px -1px oklch(0% 0 0 / 0.08), 0 2px 4px -2px oklch(0% 0 0 / 0.08);
+  --shadow-lg: 0 10px 15px -3px oklch(0% 0 0 / 0.1), 0 4px 6px -4px oklch(0% 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px oklch(0% 0 0 / 0.12), 0 8px 10px -6px oklch(0% 0 0 / 0.12);
+
+  /* ── Radius scale ─────────────────────────────────── */
+  --radius-sm:   0.5rem;
+  --radius-md:   1rem;
+  --radius-lg:   1.5rem;
+  --radius-xl:   2rem;
+  --radius-full: 9999px;
+  --radius-input:  0.5rem;
+  --radius-button: 1rem;
+  --radius-card:   1.5rem;
+  --radius-badge:  9999px;
+
+  /* ── Type scale ───────────────────────────────────── */
+  --font-size-xs:   0.64rem;
+  --font-size-sm:   0.8rem;
+  --font-size-base: 1rem;
+  --font-size-lg:   1.25rem;
+  --font-size-xl:   1.5625rem;
+  --font-size-2xl:  1.9531rem;
+  --font-size-3xl:  2.4414rem;
+  --font-size-4xl:  3.0518rem;
+
+  --line-height-tight:   1.275;
+  --line-height-normal:  1.58;
+  --line-height-relaxed: 1.73;
+
+  --font-weight-body:        400;
+  --font-weight-body-strong: 500;
+  --font-weight-heading:     700;
+
+  /* ── Shorthand aliases (後方互換) ─────────────────── */
+  --cream:      var(--color-neutral-100);
+  --cream-deep: var(--color-neutral-200);
+  --cream-card: var(--color-neutral-50);
+  --paper:      var(--color-paper);
+  --yellow:     var(--color-primary-300);
+  --yellow-soft: var(--color-primary-200);
+  --yellow-pale: var(--color-primary-100);
+  --ink:        var(--color-neutral-900);
+  --ink-soft:   var(--color-neutral-800);
+  --mute:       var(--color-neutral-500);
+  --line:       var(--color-neutral-300);
+  --line-strong: var(--color-neutral-900);
 }
 
 * {
@@ -23,13 +106,14 @@
 }
 
 html, body {
-  background: var(--cream);
-  color: var(--ink);
+  background: var(--color-bg);
+  color: var(--color-text);
 }
 
 body {
-  font-weight: 500;
-  line-height: 1.7;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-body-strong);
+  line-height: var(--line-height-relaxed);
   overflow-x: hidden;
 }
 

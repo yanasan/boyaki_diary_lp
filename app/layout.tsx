@@ -1,17 +1,11 @@
 import type { Metadata } from "next";
-import { Zen_Maru_Gothic, Zen_Kaku_Gothic_New } from "next/font/google";
+import { M_PLUS_Rounded_1c } from "next/font/google";
 import "./globals.css";
 
-const zenMaruGothic = Zen_Maru_Gothic({
-  weight: ["400", "500", "700", "900"],
+const mPlusRounded = M_PLUS_Rounded_1c({
+  weight: ["400", "500", "700", "800"],
   subsets: ["latin"],
-  variable: "--font-zen-maru",
-});
-
-const zenKakuGothicNew = Zen_Kaku_Gothic_New({
-  weight: ["400", "500", "700", "900"],
-  subsets: ["latin"],
-  variable: "--font-zen-kaku",
+  variable: "--font-mplus-rounded",
 });
 
 export const metadata: Metadata = {
@@ -25,11 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="ja"
-      className={`${zenMaruGothic.variable} ${zenKakuGothicNew.variable}`}
-    >
-      <body style={{ fontFamily: "var(--font-zen-maru), var(--font-zen-kaku), system-ui, sans-serif" }}>
+    <html lang="ja" className={mPlusRounded.variable}>
+      <body style={{ fontFamily: "var(--font-mplus-rounded), 'Hiragino Maru Gothic ProN', system-ui, sans-serif" }}>
         {children}
       </body>
     </html>
