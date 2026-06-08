@@ -1,0 +1,108 @@
+.page {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #fdf8e6 0%, #fffef8 50%, #fff4d8 100%);
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+.wrap {
+  width: min(820px, 100%);
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.back,
+.supportLink {
+  color: var(--color-text-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.hero {
+  background: var(--color-paper);
+  border: 2px solid var(--color-border-strong);
+  border-radius: var(--radius-card);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(1.55rem, 3vw, 2rem);
+}
+
+.hero p {
+  margin: 0.4rem 0 0;
+  color: var(--color-text-soft);
+}
+
+.list {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.card {
+  background: var(--color-paper);
+  border: 1.5px solid var(--color-border);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 1.08rem;
+}
+
+.card p {
+  margin: 0.5rem 0 0;
+  color: var(--color-text-soft);
+}
+
+.loading {
+  text-align: center;
+  color: var(--color-text-muted);
+  padding: 2rem 0;
+}
+
+.pager {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.loadMore {
+  border: 2px solid var(--color-border-strong);
+  border-radius: var(--radius-button);
+  padding: 0.7rem 2rem;
+  background: var(--color-primary-300);
+  color: var(--color-text);
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.16s ease;
+}
+
+.loadMore:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.loadMore:not(:disabled):hover {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.45rem;
+  }
+}

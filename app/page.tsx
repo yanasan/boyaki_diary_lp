@@ -342,7 +342,8 @@ export default function Home() {
           <div className={styles.footLinks}>
             <a href="/terms">利用規約</a>
             <a href="/privacy">プライバシーポリシー</a>
-            <a href="#">お問い合わせ</a>
+            <a href="/faq">Q&A</a>
+            <a href="/support">お問い合わせ</a>
           </div>
           <div>© 2026 ぼやき日記</div>
         </div>

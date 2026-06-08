@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import styles from "../privacy/page.module.css";
 
 export const metadata: Metadata = {
@@ -10,12 +11,12 @@ export default function Terms() {
     <div className={styles.page}>
       <div className={styles.wrap}>
         <div className={styles.header}>
-          <a href="/" className={styles.back}>
+          <Link href="/" className={styles.back}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <path d="M19 12H5M12 5l-7 7 7 7" />
             </svg>
             トップに戻る
-          </a>
+          </Link>
           <div className={styles.brand}>
             <div className={styles.brandMark}>ぼ</div>
             <span>ぼやき日記</span>

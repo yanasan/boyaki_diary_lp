@@ -1,0 +1,137 @@
+.page {
+  min-height: 100vh;
+  background: radial-gradient(circle at 90% 8%, #ffeeba 0%, rgba(255, 238, 186, 0) 46%), var(--color-bg);
+  color: var(--color-text);
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+.wrap {
+  width: min(760px, 100%);
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.back {
+  font-size: 0.95rem;
+  color: var(--color-text-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.brand {
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.hero {
+  background: var(--color-surface-raised);
+  border: 2px solid var(--color-border-strong);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-md);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero h1 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin: 0 0 0.5rem;
+}
+
+.hero p {
+  margin: 0;
+  color: var(--color-text-soft);
+}
+
+.form {
+  background: var(--color-paper);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 1.25rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.label {
+  display: grid;
+  gap: 0.4rem;
+  font-weight: 700;
+}
+
+.required {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-primary-700);
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-input);
+  padding: 0.7rem 0.8rem;
+  font-size: 1rem;
+  color: var(--color-text);
+  background: #fff;
+}
+
+.textarea {
+  min-height: 180px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.button {
+  border: 2px solid var(--color-border-strong);
+  border-radius: var(--radius-button);
+  padding: 0.8rem 1.2rem;
+  background: var(--color-primary-300);
+  color: var(--color-text);
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.button:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.successText,
+.errorText {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.successText {
+  color: #19713a;
+}
+
+.errorText {
+  color: #a73030;
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  .header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
