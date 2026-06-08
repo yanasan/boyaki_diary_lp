@@ -1,8 +1,29 @@
 import styles from "./page.module.css";
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "ぼやき日記",
+  description:
+    "AIキャラクターと話すだけで、日記が自動生成される対話型日記アプリ。書く意志がなくても続けられる。",
+  applicationCategory: "LifestyleApplication",
+  operatingSystem: "iOS",
+  url: "https://www.boyaki-diary.com",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "JPY",
+  },
+  inLanguage: "ja",
+};
+
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Navbar */}
       <nav className={styles.nav}>
         <div className={`${styles.wrap} ${styles.navInner}`}>

@@ -3,7 +3,10 @@ import Link from "next/link";
 import styles from "../privacy/page.module.css";
 
 export const metadata: Metadata = {
-  title: "利用規約 | ぼやき日記",
+  title: "利用規約",
+  description: "ぼやき日記の利用規約です。サービスを利用する前にご確認ください。",
+  robots: { index: false, follow: false },
+  alternates: { canonical: "https://www.boyaki-diary.com/terms" },
 };
 
 export default function Terms() {

@@ -3,7 +3,10 @@ import Link from "next/link";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "プライバシーポリシー | ぼやき日記",
+  title: "プライバシーポリシー",
+  description: "ぼやき日記のプライバシーポリシーです。個人情報の取り扱いについて説明しています。",
+  robots: { index: false, follow: false },
+  alternates: { canonical: "https://www.boyaki-diary.com/privacy" },
 };
 
 export default function PrivacyPolicy() {
