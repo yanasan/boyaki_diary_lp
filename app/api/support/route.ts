@@ -43,6 +43,39 @@ function getResendClient() {
   return new Resend(apiKey);
 }
 
+function maskSecret(value: string | undefined) {
+  if (!value) return "(unset)";
+  if (value.length <= 8) return "(set, too short to preview)";
+  return `${value.slice(0, 4)}...${value.slice(-4)}`;
+}
+
+function serializeError(error: unknown) {
+  if (error instanceof Error) {
+    return {
+      name: error.name,
+      message: error.message,
+      stack: error.stack,
+    };
+  }
+
+  return error;
+}
+
+function getSupportMailDebugContext() {
+  return {
+    nodeEnv: process.env.NODE_ENV,
+    vercelEnv: process.env.VERCEL_ENV,
+    vercelUrl: process.env.VERCEL_URL,
+    supportApiAllowOrigin: process.env.SUPPORT_API_ALLOW_ORIGIN || "(fallback: *)",
+    supportToEmail: process.env.SUPPORT_TO_EMAIL || "(fallback: boyaki_diary.support@gmail.com)",
+    supportFromEmail: process.env.SUPPORT_FROM_EMAIL || "(fallback: onboarding@resend.dev)",
+    resendApiKey: maskSecret(process.env.RESEND_API_KEY),
+    firebaseProjectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || "(unset)",
+    firebaseAppId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID ? "(set)" : "(unset)",
+    firebaseMeasurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID || "(unset)",
+  };
+}
+
 function buildMailText(data: SupportPayload, referenceId: string | null) {
   const lines = [
     "ぼやき日記 LP からお問い合わせが届きました。",
@@ -132,8 +165,17 @@ export async function POST(request: Request) {
     const resend = getResendClient();
     const supportTo = process.env.SUPPORT_TO_EMAIL || "boyaki_diary.support@gmail.com";
     const supportFrom = process.env.SUPPORT_FROM_EMAIL || "onboarding@resend.dev";
+    const mailDebugContext = getSupportMailDebugContext();
 
     if (!resend) {
+      console.error("Support email missing RESEND_API_KEY", {
+        referenceId,
+        category: normalized.category,
+        hasReplyTo: Boolean(normalized.email),
+        messageLength: normalized.message.length,
+        env: mailDebugContext,
+      });
+
       return NextResponse.json(
         {
           ok: false,
@@ -143,6 +185,19 @@ export async function POST(request: Request) {
         { status: 500, headers: corsHeaders() },
       );
     }
+
+    console.info("Support email send attempt", {
+      referenceId,
+      category: normalized.category,
+      hasReplyTo: Boolean(normalized.email),
+      messageLength: normalized.message.length,
+      mail: {
+        to: supportTo,
+        from: supportFrom,
+        replyTo: normalized.email || "(none)",
+      },
+      env: mailDebugContext,
+    });
 
     const { data: resendData, error: resendError } = await resend.emails.send({
       to: supportTo,
@@ -154,10 +209,17 @@ export async function POST(request: Request) {
 
     if (resendError) {
       console.error("Support email Resend error", {
-        error: resendError,
+        error: serializeError(resendError),
         referenceId,
-        supportFrom,
-        supportTo,
+        category: normalized.category,
+        hasReplyTo: Boolean(normalized.email),
+        messageLength: normalized.message.length,
+        mail: {
+          to: supportTo,
+          from: supportFrom,
+          replyTo: normalized.email || "(none)",
+        },
+        env: mailDebugContext,
       });
 
       return NextResponse.json(
@@ -170,6 +232,17 @@ export async function POST(request: Request) {
       );
     }
 
+    console.info("Support email sent", {
+      referenceId,
+      emailId: resendData.id,
+      mail: {
+        to: supportTo,
+        from: supportFrom,
+        replyTo: normalized.email || "(none)",
+      },
+      env: mailDebugContext,
+    });
+
     return NextResponse.json({
       ok: true,
       message: "お問い合わせを受け付けました。",
@@ -177,7 +250,10 @@ export async function POST(request: Request) {
       emailId: resendData.id,
     }, { headers: corsHeaders() });
   } catch (error) {
-    console.error("Support API unexpected error", error);
+    console.error("Support API unexpected error", {
+      error: serializeError(error),
+      env: getSupportMailDebugContext(),
+    });
 
     return NextResponse.json(
       { ok: false, message: "サーバー側でエラーが発生しました。しばらくして再度お試しください。" },
