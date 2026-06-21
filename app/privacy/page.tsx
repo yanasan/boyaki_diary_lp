@@ -70,6 +70,11 @@ export default function PrivacyPolicy() {
                     <td>本アプリ利用時</td>
                   </tr>
                   <tr>
+                    <td>利用状況データ</td>
+                    <td>アプリの画面表示、操作イベント、機能利用状況等</td>
+                    <td>本アプリ利用時</td>
+                  </tr>
+                  <tr>
                     <td>端末情報</td>
                     <td>OSバージョン、アプリバージョン、クラッシュログ</td>
                     <td>本アプリ利用時</td>
@@ -152,6 +157,11 @@ export default function PrivacyPolicy() {
                     <td>認証・データベース</td>
                   </tr>
                   <tr>
+                    <td>Google Analytics for Firebase</td>
+                    <td>Google LLC</td>
+                    <td>利用状況分析・サービス改善</td>
+                  </tr>
+                  <tr>
                     <td>Gemini API</td>
                     <td>Google LLC</td>
                     <td>AI対話・日記生成</td>
@@ -193,6 +203,8 @@ export default function PrivacyPolicy() {
               <strong>広告目的でのユーザートラッキングは行いません。</strong>
             </p>
             <ul>
+              <li>Google Analytics for Firebaseにより、アプリの利用状況を分析する場合があります</li>
+              <li>利用状況分析は、サービス改善、不具合調査、機能改善のために使用します</li>
               <li>iOSではApp Tracking Transparency（ATT）に準拠します</li>
               <li>利用者は端末の設定から広告IDのリセットや広告トラッキングの無効化が可能です</li>
             </ul>
