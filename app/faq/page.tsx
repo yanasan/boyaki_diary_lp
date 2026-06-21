@@ -9,9 +9,11 @@ import {
   orderBy,
   query,
   startAfter,
+  where,
   type QueryDocumentSnapshot,
   type DocumentData,
 } from "firebase/firestore";
+import type { FaqDocument } from "@/lib/models/faq";
 import { getFirebaseDb } from "@/lib/firebase";
 import styles from "./page.module.css";
 
@@ -67,18 +69,22 @@ export default function FaqPage() {
       try {
         const q = query(
           collection(db, "faqs"),
+          where("isPublished", "==", true),
           orderBy("order", "asc"),
           limit(PAGE_SIZE),
         );
         const snapshot = await getDocs(q);
         if (cancelled) return;
 
-        const fetched: FaqItem[] = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          question: String(doc.data().question ?? ""),
-          answer: String(doc.data().answer ?? ""),
-          source: "firestore",
-        }));
+        const fetched: FaqItem[] = snapshot.docs.map((doc) => {
+          const data = doc.data() as FaqDocument;
+          return {
+            id: doc.id,
+            question: data.question,
+            answer: data.answer,
+            source: "firestore",
+          };
+        });
 
         setItems([...BASE_ITEMS, ...fetched]);
         setLastDoc(snapshot.docs[snapshot.docs.length - 1] ?? null);
@@ -103,17 +109,21 @@ export default function FaqPage() {
     try {
       const q = query(
         collection(db, "faqs"),
+        where("isPublished", "==", true),
         orderBy("order", "asc"),
         startAfter(lastDoc),
         limit(PAGE_SIZE),
       );
       const snapshot = await getDocs(q);
-      const fetched: FaqItem[] = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        question: String(doc.data().question ?? ""),
-        answer: String(doc.data().answer ?? ""),
-        source: "firestore",
-      }));
+      const fetched: FaqItem[] = snapshot.docs.map((doc) => {
+        const data = doc.data() as FaqDocument;
+        return {
+          id: doc.id,
+          question: data.question,
+          answer: data.answer,
+          source: "firestore",
+        };
+      });
 
       setItems((prev) => [...prev, ...fetched]);
       setLastDoc(snapshot.docs[snapshot.docs.length - 1] ?? null);
