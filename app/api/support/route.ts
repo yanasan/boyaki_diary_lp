@@ -144,7 +144,7 @@ export async function POST(request: Request) {
       );
     }
 
-    await resend.emails.send({
+    const { data: resendData, error: resendError } = await resend.emails.send({
       to: supportTo,
       from: supportFrom,
       subject: `[ぼやき日記] お問い合わせ (${CATEGORY_LABEL[normalized.category]})`,
@@ -152,10 +152,29 @@ export async function POST(request: Request) {
       ...(normalized.email ? { replyTo: normalized.email } : {}),
     });
 
+    if (resendError) {
+      console.error("Support email Resend error", {
+        error: resendError,
+        referenceId,
+        supportFrom,
+        supportTo,
+      });
+
+      return NextResponse.json(
+        {
+          ok: false,
+          message: "メール送信に失敗しました。送信元ドメイン設定または宛先制限を確認してください。",
+          referenceId,
+        },
+        { status: 502, headers: corsHeaders() },
+      );
+    }
+
     return NextResponse.json({
       ok: true,
       message: "お問い合わせを受け付けました。",
       referenceId,
+      emailId: resendData.id,
     }, { headers: corsHeaders() });
   } catch (error) {
     console.error("Support API unexpected error", error);
