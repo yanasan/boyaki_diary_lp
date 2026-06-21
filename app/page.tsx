@@ -241,30 +241,30 @@ export default function Home() {
             </div>
 
             <div className={`${styles.char} ${styles.charC2}`}>
-              <div className={styles.charTag}>傾聴</div>
+              <div className={styles.charTag}>自己分析</div>
               <div className={`${styles.charFace} ${styles.charFaceC2}`}>🦉</div>
               <h3>ホー博士</h3>
-              <div className={styles.role}>背景まで聴いてくれる係</div>
+              <div className={styles.role}>自分で気づきを引き出してくれる係</div>
               <p className={styles.desc}>
-                共感的に深掘り。「なぜそう感じたのか」を急かさず聞いてくれる、傾聴重視のモード。気持ちの整理にぴったり。
+                知的で落ち着いた問いで、自分では気づかなかった学びを引き出してくれる。「なぜそう感じたか」をじっくり整理したい日に。
               </p>
               <div className={styles.charQuote}>
                 <span className={styles.quoteLabel}>ホー博士</span>
-                ふむ…そのとき、心の中ではどんな声がしていた？
+                そのミス、自分ではどのあたりが原因だったと思いますか？
               </div>
             </div>
 
             <div className={`${styles.char} ${styles.charC3}`}>
-              <div className={styles.charTag}>学習</div>
+              <div className={styles.charTag}>リラックス</div>
               <div className={`${styles.charFace} ${styles.charFaceC3}`}>🐱</div>
               <h3>テト</h3>
-              <div className={styles.role}>次の一手を一緒に考える係</div>
+              <div className={styles.role}>力を抜かせてくれる係</div>
               <p className={styles.desc}>
-                今日の失敗から学ぶ。「次はどうする？」を具体的に引き出し、再現性のある改善アクションを一緒に組み立てます。
+                「まあなんとかなるよ」って力を抜かせてくれるネコ。悩みを深刻に考えすぎず、人生の長い目線でふっと楽にしてくれます。
               </p>
               <div className={styles.charQuote}>
                 <span className={styles.quoteLabel}>テト</span>
-                じゃあ次にやるなら、まず何を変える？ひとつでいいよ。
+                そんなに気にしなくてもいいんじゃない？人生長いんだからさ🐱
               </div>
             </div>
           </div>
