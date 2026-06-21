@@ -28,7 +28,7 @@ export default function PrivacyPolicy() {
 
         <div className={styles.hero}>
           <h1>プライバシーポリシー</h1>
-          <p className={styles.updated}>最終更新日：2026年5月20日</p>
+          <p className={styles.updated}>最終更新日：2026年6月21日</p>
           <p className={styles.lead}>
             ぼやき日記（以下「本アプリ」）は、利用者のプライバシーを最大限尊重します。
             本ポリシーは、本アプリが収集する情報とその取り扱いについて説明するものです。
@@ -56,7 +56,7 @@ export default function PrivacyPolicy() {
                   </tr>
                   <tr>
                     <td>チャットデータ</td>
-                    <td>AIキャラクターとの会話内容</td>
+                    <td>利用者がAIキャラクターに入力した会話内容、AIキャラクターからの返信内容</td>
                     <td>対話中</td>
                   </tr>
                   <tr>
@@ -99,20 +99,42 @@ export default function PrivacyPolicy() {
           <section className={styles.section}>
             <h2><span className={styles.num}>3</span>AIへのデータ送信について</h2>
             <p>
-              利用者がAIキャラクターと行った会話内容は、<strong>日記生成の目的に限り</strong>
-              Gemini API（Google LLC）に送信されます。
+              本アプリのAIキャラクター機能および日記生成機能では、利用者の入力内容を第三者AIサービスに送信します。
+              送信前にアプリ内で送信内容・送信先・利用目的を説明し、利用者の同意を得たうえで送信します。
             </p>
+            <div className={styles.tableWrap}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>送信されるデータ</th>
+                    <th>送信先</th>
+                    <th>利用目的</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>利用者がAIキャラクターに入力した会話内容、会話の文脈、AIキャラクターからの返信内容</td>
+                    <td>Gemini API（Google LLC）</td>
+                    <td>AIキャラクターによる応答生成および日記の自動生成</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
             <ul>
-              <li>送信データはその目的以外には使用しません</li>
+              <li>送信データはAI応答生成および日記生成の目的以外には使用しません</li>
               <li>Googleとの間で入力データをAIの学習に利用しない設定を適用しています</li>
               <li>送信時に氏名・住所・電話番号など直接個人を特定する情報は付加しません</li>
+              <li>利用者が会話内に個人情報を入力した場合、その内容は上記の送信データに含まれる可能性があります</li>
+              <li>同意しない場合、AIキャラクターとの対話および日記生成機能は利用できません</li>
             </ul>
           </section>
 
           <section className={styles.section}>
             <h2><span className={styles.num}>4</span>第三者への情報提供</h2>
             <p>
-              収集した情報は、以下の業務委託先を除き、<strong>第三者への提供・販売は一切行いません</strong>。
+              収集した情報は、以下の業務委託先・サービス提供者への送信を除き、
+              <strong>第三者への提供・販売は一切行いません</strong>。
+              これらの提供者は、本アプリが利用者情報を保護するために求める水準と同等またはそれ以上の保護措置を提供するサービスです。
             </p>
             <div className={styles.tableWrap}>
               <table className={styles.table}>
