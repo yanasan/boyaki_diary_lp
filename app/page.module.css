@@ -287,6 +287,13 @@
   justify-content: center;
   font-size: 16px;
   margin-right: -8px;
+  overflow: hidden;
+}
+
+.avatars img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* ── Phone Mockup ──────────────────────────────────── */
@@ -414,6 +421,13 @@
   justify-content: center;
   font-size: 24px;
   flex-shrink: 0;
+  overflow: hidden;
+}
+
+.charTile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .homeCardText {
@@ -763,6 +777,13 @@
   justify-content: center;
   font-size: 36px;
   margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.charFace img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .charFaceC1 { background: var(--color-char-penmaru-accent); }

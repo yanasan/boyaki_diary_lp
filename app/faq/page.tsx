@@ -5,25 +5,22 @@ import Link from "next/link";
 import {
   collection,
   getDocs,
-  limit,
-  orderBy,
   query,
-  startAfter,
   where,
-  type QueryDocumentSnapshot,
-  type DocumentData,
 } from "firebase/firestore";
 import type { FaqDocument } from "@/lib/models/faq";
 import { getFirebaseDb } from "@/lib/firebase";
 import styles from "./page.module.css";
-
-const PAGE_SIZE = 10;
 
 type FaqItem = {
   id: string;
   question: string;
   answer: string;
   source: "static" | "firestore";
+};
+
+type OrderedFaqItem = FaqItem & {
+  order: number;
 };
 
 const BASE_ITEMS: FaqItem[] = [
@@ -50,9 +47,6 @@ const BASE_ITEMS: FaqItem[] = [
 export default function FaqPage() {
   const [items, setItems] = useState<FaqItem[]>(BASE_ITEMS);
   const [isLoading, setIsLoading] = useState(true);
-  const [hasMore, setHasMore] = useState(false);
-  const [lastDoc, setLastDoc] = useState<QueryDocumentSnapshot<DocumentData> | null>(null);
-  const [isLoadingMore, setIsLoadingMore] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -70,25 +64,30 @@ export default function FaqPage() {
         const q = query(
           collection(db, "faqs"),
           where("isPublished", "==", true),
-          orderBy("order", "asc"),
-          limit(PAGE_SIZE),
         );
         const snapshot = await getDocs(q);
         if (cancelled) return;
 
-        const fetched: FaqItem[] = snapshot.docs.map((doc) => {
-          const data = doc.data() as FaqDocument;
-          return {
-            id: doc.id,
-            question: data.question,
-            answer: data.answer,
-            source: "firestore",
-          };
-        });
+        const fetched: FaqItem[] = snapshot.docs
+          .map((doc) => {
+            const data = doc.data() as FaqDocument;
+            return {
+              id: doc.id,
+              question: data.question,
+              answer: data.answer,
+              order: data.order ?? Number.MAX_SAFE_INTEGER,
+              source: "firestore" as const,
+            };
+          })
+          .sort((a, b) => a.order - b.order)
+          .map((item: OrderedFaqItem) => ({
+            id: item.id,
+            question: item.question,
+            answer: item.answer,
+            source: item.source,
+          }));
 
         setItems([...BASE_ITEMS, ...fetched]);
-        setLastDoc(snapshot.docs[snapshot.docs.length - 1] ?? null);
-        setHasMore(snapshot.docs.length === PAGE_SIZE);
       } catch {
         // Firestore 未設定時はベースのみ表示
       } finally {
@@ -99,39 +98,6 @@ export default function FaqPage() {
     loadInitial();
     return () => { cancelled = true; };
   }, []);
-
-  const loadMore = async () => {
-    if (!lastDoc || isLoadingMore) return;
-    const db = getFirebaseDb();
-    if (!db) return;
-
-    setIsLoadingMore(true);
-    try {
-      const q = query(
-        collection(db, "faqs"),
-        where("isPublished", "==", true),
-        orderBy("order", "asc"),
-        startAfter(lastDoc),
-        limit(PAGE_SIZE),
-      );
-      const snapshot = await getDocs(q);
-      const fetched: FaqItem[] = snapshot.docs.map((doc) => {
-        const data = doc.data() as FaqDocument;
-        return {
-          id: doc.id,
-          question: data.question,
-          answer: data.answer,
-          source: "firestore",
-        };
-      });
-
-      setItems((prev) => [...prev, ...fetched]);
-      setLastDoc(snapshot.docs[snapshot.docs.length - 1] ?? null);
-      setHasMore(snapshot.docs.length === PAGE_SIZE);
-    } finally {
-      setIsLoadingMore(false);
-    }
-  };
 
   return (
     <div className={styles.page}>
@@ -159,17 +125,6 @@ export default function FaqPage() {
               ))}
             </section>
 
-            {hasMore && (
-              <div className={styles.pager}>
-                <button
-                  className={styles.loadMore}
-                  onClick={loadMore}
-                  disabled={isLoadingMore}
-                >
-                  {isLoadingMore ? "読み込み中..." : "もっと見る"}
-                </button>
-              </div>
-            )}
           </>
         )}
       </div>

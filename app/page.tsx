@@ -1,4 +1,8 @@
+import Image from "next/image";
 import styles from "./page.module.css";
+import hooImage from "./character_hoo.png";
+import penguImage from "./character_pengu.png";
+import tetoImage from "./character_teto.png";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -82,9 +86,15 @@ export default function Home() {
 
             <div className={styles.heroMeta}>
               <div className={styles.avatars}>
-                <span>🐧</span>
-                <span>🦉</span>
-                <span>🐱</span>
+                <span>
+                  <Image src={penguImage} alt="ぺんまる" width={32} height={32} />
+                </span>
+                <span>
+                  <Image src={hooImage} alt="ホー博士" width={32} height={32} />
+                </span>
+                <span>
+                  <Image src={tetoImage} alt="テト" width={32} height={32} />
+                </span>
               </div>
               <span>3キャラから選べる、あなた専用のAIパートナー</span>
             </div>
@@ -118,7 +128,9 @@ export default function Home() {
 
                 <div className={styles.homeCard}>
                   <div className={styles.homeCardTop}>
-                    <div className={styles.charTile}>🐱</div>
+                    <div className={styles.charTile}>
+                      <Image src={tetoImage} alt="" width={44} height={44} />
+                    </div>
                     <div className={styles.homeCardText}>
                       <div className={styles.dateLabel}>2026年5月20日(水)</div>
                       <div className={styles.bubble}>今日の一番の出来事は？</div>
@@ -228,7 +240,9 @@ export default function Home() {
           <div className={styles.chars}>
             <div className={`${styles.char} ${styles.charC1}`}>
               <div className={styles.charTag}>ポジティブ</div>
-              <div className={`${styles.charFace} ${styles.charFaceC1}`}>🐧</div>
+              <div className={`${styles.charFace} ${styles.charFaceC1}`}>
+                <Image src={penguImage} alt="ぺんまる" width={64} height={64} />
+              </div>
               <h3>ぺんまる</h3>
               <div className={styles.role}>小さな成功を見つける係</div>
               <p className={styles.desc}>
@@ -242,7 +256,9 @@ export default function Home() {
 
             <div className={`${styles.char} ${styles.charC2}`}>
               <div className={styles.charTag}>自己分析</div>
-              <div className={`${styles.charFace} ${styles.charFaceC2}`}>🦉</div>
+              <div className={`${styles.charFace} ${styles.charFaceC2}`}>
+                <Image src={hooImage} alt="ホー博士" width={64} height={64} />
+              </div>
               <h3>ホー博士</h3>
               <div className={styles.role}>自分で気づきを引き出してくれる係</div>
               <p className={styles.desc}>
@@ -256,7 +272,9 @@ export default function Home() {
 
             <div className={`${styles.char} ${styles.charC3}`}>
               <div className={styles.charTag}>リラックス</div>
-              <div className={`${styles.charFace} ${styles.charFaceC3}`}>🐱</div>
+              <div className={`${styles.charFace} ${styles.charFaceC3}`}>
+                <Image src={tetoImage} alt="テト" width={64} height={64} />
+              </div>
               <h3>テト</h3>
               <div className={styles.role}>力を抜かせてくれる係</div>
               <p className={styles.desc}>
