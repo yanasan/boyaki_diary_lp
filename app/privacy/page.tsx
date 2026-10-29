@@ -28,7 +28,7 @@ export default function PrivacyPolicy() {
 
         <div className={styles.hero}>
           <h1>プライバシーポリシー</h1>
-          <p className={styles.updated}>最終更新日：2026年6月21日</p>
+          <p className={styles.updated}>最終更新日：2026年10月29日</p>
           <p className={styles.lead}>
             ぼやき日記（以下「本アプリ」）は、利用者のプライバシーを最大限尊重します。
             本ポリシーは、本アプリが収集する情報とその取り扱いについて説明するものです。
@@ -65,6 +65,16 @@ export default function PrivacyPolicy() {
                     <td>日記生成・編集時</td>
                   </tr>
                   <tr>
+                    <td>記憶データ</td>
+                    <td>日記・チャットの内容からAIが作る要約（その日の出来事・感情、日付のある予定、登場人物、繰り返し出てくる関心事）</td>
+                    <td>日記生成時</td>
+                  </tr>
+                  <tr>
+                    <td>購入情報</td>
+                    <td>購入した商品、取引ID、購入日時、返金・取り消しの情報。クレジットカード番号などのお支払い情報はAppleが処理し、本アプリは取得しません</td>
+                    <td>チケット購入時</td>
+                  </tr>
+                  <tr>
                     <td>利用履歴</td>
                     <td>記録日時、チケット使用状況</td>
                     <td>本アプリ利用時</td>
@@ -95,6 +105,8 @@ export default function PrivacyPolicy() {
             <ul>
               <li>本アプリのサービス提供・運営</li>
               <li>AIによる日記の自動生成（詳細は「3. AIへのデータ送信について」参照）</li>
+              <li>過去の日記の内容をAIが踏まえて応答するための、記憶の作成と利用</li>
+              <li>チケットの購入の処理、購入内容の確認、不正利用の防止</li>
               <li>アプリの利用状況分析およびサービス改善</li>
               <li>広告の配信</li>
               <li>不正利用の防止・セキュリティ確保</li>
@@ -122,11 +134,16 @@ export default function PrivacyPolicy() {
                     <td>Gemini API（Google LLC）</td>
                     <td>AIキャラクターによる応答生成および日記の自動生成</td>
                   </tr>
+                  <tr>
+                    <td>日記・チャットの内容（記憶の作成）、および直近1週間の日記の要約（応答生成時に会話の文脈として添える）</td>
+                    <td>Gemini API（Google LLC）</td>
+                    <td>過去の出来事を踏まえた応答の生成、記憶の作成</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
             <ul>
-              <li>送信データはAI応答生成および日記生成の目的以外には使用しません</li>
+              <li>送信データはAI応答生成、日記生成、および記憶の作成の目的以外には使用しません</li>
               <li>Googleとの間で入力データをAIの学習に利用しない設定を適用しています</li>
               <li>送信時に氏名・住所・電話番号など直接個人を特定する情報は付加しません</li>
               <li>利用者が会話内に個人情報を入力した場合、その内容は上記の送信データに含まれる可能性があります</li>
@@ -167,6 +184,11 @@ export default function PrivacyPolicy() {
                     <td>AI対話・日記生成</td>
                   </tr>
                   <tr>
+                    <td>App Store / Apple ID</td>
+                    <td>Apple Inc.</td>
+                    <td>チケット購入の決済、購入情報の検証、Appleでサインイン</td>
+                  </tr>
+                  <tr>
                     <td>Google AdMob</td>
                     <td>Google LLC</td>
                     <td>広告配信</td>
@@ -184,6 +206,9 @@ export default function PrivacyPolicy() {
               <li>日記データはアプリ利用期間中保持されます</li>
               <li>アプリをアンインストールした場合、または削除依頼をいただいた場合、サーバー上のデータは<strong>30日以内に完全削除</strong>されます</li>
               <li>個別データの削除はアプリ内の設定画面から随時行えます</li>
+              <li>記憶データは、日記や会話のデータと同じく、アカウントを削除したときにすべて削除されます</li>
+              <li>記憶データの個別の確認・削除は、アプリ内の機能として提供を予定しています。提供までの間は、下記お問い合わせ先にご連絡いただければ、確認・削除に対応します</li>
+              <li>購入情報（購入した商品、取引ID、購入日時など）は、購入内容の確認、返金・取り消しの反映、不正利用の防止のために保持します。アカウントを削除した後も、必要な範囲で保持することがあります</li>
             </ul>
           </section>
 
@@ -228,7 +253,7 @@ export default function PrivacyPolicy() {
               </div>
               <div className={styles.right}>
                 <span className={styles.rightLabel}>開示・利用停止等</span>
-                下記お問い合わせ先まで
+                記憶データ・購入情報を含め、下記お問い合わせ先まで
               </div>
             </div>
           </section>
