@@ -28,7 +28,7 @@ export default function Terms() {
 
         <div className={styles.hero}>
           <h1>利用規約</h1>
-          <p className={styles.updated}>最終更新日：2026年5月20日</p>
+          <p className={styles.updated}>最終更新日：2026年11月3日</p>
         </div>
 
         <div className={styles.body}>
@@ -113,7 +113,7 @@ export default function Terms() {
           <section className={styles.section}>
             <h2><span className={styles.num}>第6条</span>生成コンテンツ</h2>
             <ol>
-              <li>本サービスのAIが生成する日記・コメント等は自動生成によるものです。</li>
+              <li>本サービスのAIが生成する日記・コメント・記憶（日記の内容から作る要約等）・人物像・週次サマリー等は自動生成によるものです。</li>
               <li>生成コンテンツの正確性・完全性・適切性について、運営者は一切保証しません。</li>
               <li>生成コンテンツは医療・法律・精神的なアドバイスの代替となるものではありません。</li>
               <li>利用者が本サービスを通じて生成した日記コンテンツの著作権は、利用者に帰属します。</li>
