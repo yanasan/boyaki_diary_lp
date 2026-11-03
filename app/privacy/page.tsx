@@ -231,8 +231,15 @@ export default function PrivacyPolicy() {
               そのほかのサービスで情報を取り扱う場所は、各提供者によります。
             </p>
             <p>
-              Gemini APIなど、Googleによる処理は、日本国外を含む場所で行われることがあります。
-              Googleの規約では、Googleまたはその代理人が拠点を持つ国で、データが一時的に保存またはキャッシュされることがあるとされています。
+              本アプリは、AIの処理（Gemini API）をGoogleに委託しています。
+              委託先のGoogleによる処理は、Googleが拠点を持つ日本国外の国で行われることがあり、データが一時的に保存またはキャッシュされることがあります。
+            </p>
+            <p>
+              Googleとの間では、Googleのデータ処理に関する契約条件（Data Processing Addendum）が適用されます。
+            </p>
+            <p>
+              外国の名称、その国の個人情報の保護に関する制度、Googleが講ずる措置についての情報は、ご請求があれば、遅滞なくお知らせします（連絡先：
+              <a href="mailto:boyaki.diary@gmail.com">boyaki.diary@gmail.com</a>）。
             </p>
             <p className={styles.note}>各サービスのプライバシーポリシーは各提供者のウェブサイトをご確認ください。</p>
           </section>
