@@ -381,6 +381,7 @@ export default function Home() {
           <div className={styles.footLinks}>
             <a href="/terms">利用規約</a>
             <a href="/privacy">プライバシーポリシー</a>
+            <a href="/tokushoho">特定商取引法に基づく表記</a>
             <a href="/faq">Q&A</a>
             <a href="/support">お問い合わせ</a>
           </div>
