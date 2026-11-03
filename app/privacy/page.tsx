@@ -307,8 +307,8 @@ export default function PrivacyPolicy() {
           <div className={styles.contact}>
             <h3>お問い合わせ</h3>
             <p>本ポリシーに関するお問い合わせ：</p>
-            <a href="mailto:boyakidiary.app@gmail.com" className={styles.email}>
-              boyakidiary.app@gmail.com
+            <a href="mailto:boyaki.diary@gmail.com" className={styles.email}>
+              boyaki.diary@gmail.com
             </a>
           </div>
 
