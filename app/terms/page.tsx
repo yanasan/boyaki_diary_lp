@@ -60,7 +60,7 @@ export default function Terms() {
                   </tr>
                   <tr>
                     <td>本アプリ</td>
-                    <td>ぼやき日記のiOS・Androidアプリケーション</td>
+                    <td>ぼやき日記のiOSアプリケーション</td>
                   </tr>
                   <tr>
                     <td>AIキャラクター</td>

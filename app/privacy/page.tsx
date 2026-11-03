@@ -172,7 +172,6 @@ export default function PrivacyPolicy() {
             <ul>
               <li>送信データはAI応答生成、日記生成、記憶の作成、人物像の作成、および週次サマリーの作成の目的以外には使用しません</li>
               <li>日記を保存しなかった場合などに、前日の対話の内容から日記を自動で作成することがあります（この場合も、上記と同じ送信先・目的で送信します）</li>
-              <li>Googleとの間で入力データをAIの学習に利用しない設定を適用しています</li>
               <li>送信時に氏名・住所・電話番号など直接個人を特定する情報は付加しません</li>
               <li>利用者が会話内に個人情報を入力した場合、その内容は上記の送信データに含まれる可能性があります</li>
               <li>同意しない場合、AIキャラクターとの対話および日記生成機能は利用できません</li>
@@ -230,11 +229,10 @@ export default function PrivacyPolicy() {
           <section className={styles.section}>
             <h2><span className={styles.num}>5</span>データの保存・削除</h2>
             <ul>
-              <li>チャット履歴は最終利用日から<strong>7日間</strong>保持後、自動削除されます</li>
               <li>日記データはアプリ利用期間中保持されます</li>
-              <li>アプリをアンインストールした場合、または削除依頼をいただいた場合、サーバー上のデータは<strong>30日以内に完全削除</strong>されます</li>
+              <li>データの削除をご希望の場合は、下記お問い合わせ先にご連絡ください。本人であることを確認したうえで、遅滞なく対応します</li>
               <li>個別データの削除はアプリ内の設定画面から随時行えます</li>
-              <li>記憶データは、日記や会話のデータと同じく、アカウントを削除したときにすべて削除されます</li>
+              <li>アプリ内でアカウントを削除しても、日記・会話・記憶などのデータは、ただちには削除されません。削除をご希望の場合は、上記のとおり、お問い合わせ先にご連絡ください</li>
               <li>記憶データの個別の確認・削除は、アプリ内の機能として提供を予定しています。提供までの間は、下記お問い合わせ先にご連絡いただければ、確認・削除に対応します</li>
               <li>購入情報（購入した商品、取引ID、購入日時など）は、購入内容の確認、返金・取り消しの反映、不正利用の防止のために保持します。アカウントを削除した後も、必要な範囲で保持することがあります</li>
             </ul>
@@ -245,7 +243,7 @@ export default function PrivacyPolicy() {
             <ul>
               <li>すべての通信はTLS（HTTPS）で暗号化しています</li>
               <li>データはFirebase（Google Cloud）のセキュリティ基準に基づき管理しています</li>
-              <li>認証トークンはiOS Keychain / Android Keystoreに準ずるセキュアな領域に保存されます</li>
+              <li>認証トークンはiOS Keychainに準ずるセキュアな領域に保存されます</li>
             </ul>
           </section>
 
@@ -253,12 +251,11 @@ export default function PrivacyPolicy() {
             <h2><span className={styles.num}>7</span>広告・トラッキングについて</h2>
             <p>
               本アプリはGoogle AdMobによるリワード広告を配信しています。
-              <strong>広告目的でのユーザートラッキングは行いません。</strong>
+              広告の配信のため、広告識別子（広告ID）などが利用されます。
             </p>
             <ul>
               <li>Google Analytics for Firebaseにより、アプリの利用状況を分析する場合があります</li>
               <li>利用状況分析は、サービス改善、不具合調査、機能改善のために使用します</li>
-              <li>iOSではApp Tracking Transparency（ATT）に準拠します</li>
               <li>利用者は端末の設定から広告IDのリセットや広告トラッキングの無効化が可能です</li>
             </ul>
           </section>
@@ -277,7 +274,7 @@ export default function PrivacyPolicy() {
               </div>
               <div className={styles.right}>
                 <span className={styles.rightLabel}>削除</span>
-                アプリ内設定画面から個別削除・全データ削除が可能
+                アプリ内で個別削除が可能（アカウントを削除した後のデータの扱いは「5. データの保存・削除」を参照）
               </div>
               <div className={styles.right}>
                 <span className={styles.rightLabel}>開示・利用停止等</span>
