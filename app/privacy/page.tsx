@@ -28,7 +28,7 @@ export default function PrivacyPolicy() {
 
         <div className={styles.hero}>
           <h1>プライバシーポリシー</h1>
-          <p className={styles.updated}>最終更新日：2026年10月29日</p>
+          <p className={styles.updated}>最終更新日：2026年11月3日</p>
           <p className={styles.lead}>
             ぼやき日記（以下「本アプリ」）は、利用者のプライバシーを最大限尊重します。
             本ポリシーは、本アプリが収集する情報とその取り扱いについて説明するものです。
@@ -51,7 +51,7 @@ export default function PrivacyPolicy() {
                 <tbody>
                   <tr>
                     <td>認証情報</td>
-                    <td>匿名ユーザーID（自動生成）、Apple IDトークン（Apple Sign In利用時）</td>
+                    <td>匿名ユーザーID（自動生成）、Apple IDトークン（Apple Sign In利用時）、ログイン方法の種別（ゲスト／Apple）</td>
                     <td>初回起動・ログイン時</td>
                   </tr>
                   <tr>
@@ -68,6 +68,21 @@ export default function PrivacyPolicy() {
                     <td>記憶データ</td>
                     <td>日記・チャットの内容からAIが作る要約（その日の出来事・感情、日付のある予定、登場人物、繰り返し出てくる関心事）</td>
                     <td>日記生成時</td>
+                  </tr>
+                  <tr>
+                    <td>人物像</td>
+                    <td>アンケートの回答をもとに作る、あなたらしさの要約と、AIに渡すための説明文</td>
+                    <td>人物像の作成時</td>
+                  </tr>
+                  <tr>
+                    <td>週次サマリー</td>
+                    <td>1週間分の日記から作る振り返り文</td>
+                    <td>週次サマリー生成時</td>
+                  </tr>
+                  <tr>
+                    <td>通知情報</td>
+                    <td>通知トークン、通知の設定</td>
+                    <td>通知の設定時</td>
                   </tr>
                   <tr>
                     <td>購入情報</td>
@@ -106,6 +121,8 @@ export default function PrivacyPolicy() {
               <li>本アプリのサービス提供・運営</li>
               <li>AIによる日記の自動生成（詳細は「3. AIへのデータ送信について」参照）</li>
               <li>過去の日記の内容をAIが踏まえて応答するための、記憶の作成と利用</li>
+              <li>人物像・週次サマリーの作成と、それらの日記生成・応答への反映</li>
+              <li>リマインド通知の配信</li>
               <li>チケットの購入の処理、購入内容の確認、不正利用の防止</li>
               <li>アプリの利用状況分析およびサービス改善</li>
               <li>広告の配信</li>
@@ -139,11 +156,22 @@ export default function PrivacyPolicy() {
                     <td>Gemini API（Google LLC）</td>
                     <td>過去の出来事を踏まえた応答の生成、記憶の作成</td>
                   </tr>
+                  <tr>
+                    <td>人物像の作成のためのアンケートの回答、作成した人物像の説明文</td>
+                    <td>Gemini API（Google LLC）</td>
+                    <td>人物像の作成、および応答・日記生成・週次サマリーへの反映</td>
+                  </tr>
+                  <tr>
+                    <td>1週間分の日記</td>
+                    <td>Gemini API（Google LLC）</td>
+                    <td>週次サマリー（振り返り）の作成</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
             <ul>
-              <li>送信データはAI応答生成、日記生成、および記憶の作成の目的以外には使用しません</li>
+              <li>送信データはAI応答生成、日記生成、記憶の作成、人物像の作成、および週次サマリーの作成の目的以外には使用しません</li>
+              <li>日記を保存しなかった場合などに、前日の対話の内容から日記を自動で作成することがあります（この場合も、上記と同じ送信先・目的で送信します）</li>
               <li>Googleとの間で入力データをAIの学習に利用しない設定を適用しています</li>
               <li>送信時に氏名・住所・電話番号など直接個人を特定する情報は付加しません</li>
               <li>利用者が会話内に個人情報を入力した場合、その内容は上記の送信データに含まれる可能性があります</li>
