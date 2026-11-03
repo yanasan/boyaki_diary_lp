@@ -1,392 +1,170 @@
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./page.module.css";
-import hooImage from "./character_hoo.png";
-import penguImage from "./character_pengu.png";
-import tetoImage from "./character_teto.png";
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "ぼやき日記",
-  description:
-    "AIキャラクターと話すだけで、日記が自動生成される対話型日記アプリ。書く意志がなくても続けられる。",
-  applicationCategory: "LifestyleApplication",
-  operatingSystem: "iOS",
-  url: "https://www.boyaki-diary.com",
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "JPY",
-  },
-  inLanguage: "ja",
-};
-
+import HomePreview from "./home-preview";
+import { companions } from "./companions";
+const storeUrl = "https://apps.apple.com/app/%E3%81%BC%E3%82%84%E3%81%8D%E6%97%A5%E8%A8%98/id6773559912";
+function StoreLink() {
+  return <a className={styles.store} href={storeUrl} target="_blank" rel="noopener noreferrer" aria-label="App Storeでぼやき日記をダウンロード（新しいタブで開きます）">
+      <span className={styles.small}>無料ダウンロード</span>
+      <strong>App Store で入手 ↗</strong>
+      </a>;
+}
+function Brand() {
+  return <Link href="/" className={styles.brand} aria-label="ぼやき日記 トップ">
+      <span className={styles.brandMark}>ぼ</span>
+      <span>ぼやき日記</span>
+      </Link>;
+}
 export default function Home() {
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      {/* Navbar */}
-      <nav className={styles.nav}>
-        <div className={`${styles.wrap} ${styles.navInner}`}>
-          <a href="#" className={styles.brand}>
-            <div className={styles.brandMark}>ぼ</div>
-            <div className={styles.brandName}>
-              ぼやき日記
-            </div>
-          </a>
-          <div className={styles.navCta}>
-            <span className={styles.hide}>iOSアプリ無料配信中</span>
-            <a className={styles.pill} href="https://apps.apple.com/app/%E3%81%BC%E3%82%84%E3%81%8D%E6%97%A5%E8%A8%98/id6773559912" target="_blank" rel="noopener noreferrer">
-              <svg width="14" height="14" viewBox="0 0 384 512" fill="currentColor">
-                <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
-              </svg>
-              ダウンロード
-            </a>
-          </div>
-        </div>
+  return <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "SoftwareApplication", name: "ぼやき日記", description: "ぼやくだけで、日記になる。3人のAIの相棒との会話を日記に。週間振り返りと記憶ノートで、自分のことを少しずつ。", applicationCategory: "LifestyleApplication", operatingSystem: "iOS", url: "https://www.boyaki-diary.com", offers: { "@type": "Offer", price: "0", priceCurrency: "JPY", description: "無料ダウンロード・アプリ内課金あり" }, inLanguage: "ja" }) }} />
+    <a className={styles.skip} href="#main">本文へスキップ</a>
+    <header className={styles.header}>
+      <div className={styles.nav}>
+      <Brand />
+      <nav aria-label="メインナビゲーション">
+      <a className={styles.desktopLink} href="#companions">3人の相棒</a>
+      <a className={styles.desktopLink} href="#weekly">ふりかえり</a>
+      <a className={styles.navDownload} href="#download">ダウンロード ↓</a>
       </nav>
-
-      {/* Hero */}
-      <section className={`${styles.hero} ${styles.wrap}`}>
-        <div className={`${styles.blob} ${styles.blobB1}`}></div>
-        <div className={`${styles.blob} ${styles.blobB2}`}></div>
-        <div className={styles.heroGrid}>
-          <div>
-            <span className={styles.eyebrow}>
-              <span className={styles.dot}></span>AIと話す対話型日記
-            </span>
-            <h1 className={styles.headline}>
-              <span className={styles.quoteChar}>「</span>ぼやいてたら、<br />
-              <span className={styles.hl}>日記</span>になってた。
-              <span className={styles.quoteChar}>」</span>
-            </h1>
-            <p className={styles.lede}>
-              書こうとしなくていい。
-              <b>AIキャラに今日のことをぼやく</b>
-              だけで、その日の日記がそっと出来上がる。続かなかった日記が、はじめて続く。
-            </p>
-
-            <div className={styles.ctaRow} id="download">
-              <a className={styles.appBadge} href="https://apps.apple.com/app/%E3%81%BC%E3%82%84%E3%81%8D%E6%97%A5%E8%A8%98/id6773559912" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 384 512" fill="currentColor">
-                  <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
-                </svg>
-                <div>
-                  <span className={styles.badgeB1}>Download on the</span>
-                  <span className={styles.badgeB2}>App Store</span>
-                </div>
-              </a>
-              <span className={styles.androidNote}>
-                Android版は<s>準備中</s> coming soon
-              </span>
-            </div>
-
-            <div className={styles.heroMeta}>
-              <div className={styles.avatars}>
-                <span>
-                  <Image src={penguImage} alt="ぺんまる" width={32} height={32} />
-                </span>
-                <span>
-                  <Image src={hooImage} alt="ホー博士" width={32} height={32} />
-                </span>
-                <span>
-                  <Image src={tetoImage} alt="テト" width={32} height={32} />
-                </span>
-              </div>
-              <span>3キャラから選べる、あなた専用のAIパートナー</span>
-            </div>
-          </div>
-
-          <div className={styles.phoneWrap}>
-            <div className={`${styles.sticker} ${styles.stickerS1}`}>
-              <span className={styles.stickerEmoji}>✏️</span>書かない日記
-            </div>
-            <div className={`${styles.sticker} ${styles.stickerS2}`}>
-              <span className={styles.stickerEmoji}>💬</span>話すだけでOK
-            </div>
-            <div className={`${styles.sticker} ${styles.stickerS3}`}>
-              <span className={styles.stickerEmoji}>🌙</span>毎晩3分
-            </div>
-            <div className={styles.phone} aria-hidden="true">
-              <div className={styles.screen}>
-                <div className={styles.statusbar}>
-                  <span>13:19</span>
-                  <span className={styles.statusRight}>
-                    <svg width="16" height="11" viewBox="0 0 16 11" fill="currentColor">
-                      <path d="M8 2.5c2 0 3.9.8 5.3 2.1.3.3.7.3 1 0l.5-.5c.3-.3.3-.7 0-1C13 1.5 10.6.5 8 .5S3 1.5 1.2 3.1c-.3.3-.3.7 0 1l.5.5c.3.3.7.3 1 0C4.1 3.3 6 2.5 8 2.5zm0 3c1.2 0 2.3.5 3.2 1.2.3.3.7.3 1 0l.5-.5c.3-.3.3-.7 0-1C11.5 4 9.8 3.3 8 3.3s-3.5.7-4.7 1.9c-.3.3-.3.7 0 1l.5.5c.3.3.7.3 1 0C5.7 6 6.8 5.5 8 5.5zm0 3c.5 0 1 .2 1.4.5.3.3.7.3 1 0l.5-.5c.3-.3.3-.7 0-1C10.2 6.8 9.1 6.3 8 6.3s-2.2.5-2.9 1.2c-.3.3-.3.7 0 1l.5.5c.3.3.7.3 1 0 .4-.3.9-.5 1.4-.5zM8 9.5l-1 1c-.3.3-.3.7 0 1l.5.5c.3.3.7.3 1 0l1-1c.3-.3.3-.7 0-1l-.5-.5c-.3-.3-.7-.3-1 0z" />
-                    </svg>
-                    <svg width="24" height="11" viewBox="0 0 24 11" fill="none" stroke="currentColor" strokeWidth="1">
-                      <rect x=".5" y=".5" width="20" height="10" rx="2" />
-                      <rect x="2" y="2" width="17" height="7" rx="1" fill="currentColor" />
-                      <rect x="22" y="3.5" width="1.5" height="4" rx=".75" fill="currentColor" />
-                    </svg>
-                  </span>
-                </div>
-
-                <div className={styles.homeCard}>
-                  <div className={styles.homeCardTop}>
-                    <div className={styles.charTile}>
-                      <Image src={tetoImage} alt="" width={44} height={44} />
-                    </div>
-                    <div className={styles.homeCardText}>
-                      <div className={styles.dateLabel}>2026年5月20日(水)</div>
-                      <div className={styles.bubble}>今日の一番の出来事は？</div>
-                      <div className={styles.subLabel}>テトと静かに見つめる</div>
-                    </div>
-                  </div>
-                  <div className={styles.startBtn}>今日の日記をはじめる</div>
-                </div>
-
-                <div className={styles.recentH}>
-                  <h4>最近の日記</h4>
-                  <a>一覧を見る ›</a>
-                </div>
-                <div className={styles.diaryCard}>
-                  <h5>Apple Developer 審査通過！</h5>
-                  <p>今日、Apple Developerの審査が通った。初めての通過で、とても嬉しい。難しいこともあったけど…</p>
-                  <div className={styles.diaryMeta}>
-                    <span className={styles.chip}>📅 5月20日</span>
-                    <span className={styles.chip}>🙂 うれしい</span>
-                  </div>
-                </div>
-
-                <div className={styles.tabbar}>
-                  <div className={styles.tabActive}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M3 12l9-9 9 9M5 10v10h4v-6h6v6h4V10" />
-                    </svg>
-                    ホーム
-                  </div>
-                  <div className={styles.tabItem}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M6 4h11a2 2 0 012 2v15l-7-4-7 4V6a2 2 0 011-2z" />
-                    </svg>
-                    日記
-                  </div>
-                  <div className={styles.tabItem}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <circle cx="12" cy="12" r="3" />
-                      <path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1.1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z" />
-                    </svg>
-                    設定
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      </div>
+      </header>
+    <main id="main">
+      <section className={`${styles.wrap} ${styles.hero}`}>
+        <div>
+      <p className={styles.eyebrow}>話すことから、はじまる日記。</p>
+      <h1>ぼやくだけで、<br />
+      <span className={styles.marker}>日記になる。</span>
+      </h1>
+      <p className={styles.lede}>うれしかったことも、なんだかなぁ、なことも。<br />好きな相棒に今日のことを話すと、<br />あなたの一日が、日記として残ります。</p>
+      <StoreLink />
+      <p className={styles.small}>iPhone向け ／ 無料ダウンロード・アプリ内課金あり</p>
+      <a className={styles.textLink} href="#companions">あなたの相棒を見つける ↓</a>
+      </div>
+      <HomePreview />
       </section>
-
-      {/* Steps */}
-      <section className={`${styles.sec} ${styles.stepsBg}`}>
-        <div className={styles.wrap}>
-          <span className={styles.secEyebrow}>HOW IT WORKS</span>
-          <h2 className={styles.secTitle}>
-            <span className={styles.hl}>3ステップ</span>で、今日の日記。
-          </h2>
-          <p className={styles.secSub}>特別なことは何も。アプリを開いて、ぼやくだけ。あとはAIにおまかせ。</p>
-
-          <div className={styles.steps}>
-            <div className={styles.step}>
-              <div className={styles.stepNum}>1</div>
-              <div className={styles.stepIllo}>🎙️</div>
-              <h3>キャラを選ぶ</h3>
-              <p>気分に合うAIパートナーを選んで、その日の聞き役に。いつでも切り替えOK。</p>
-            </div>
-            <div className={styles.step}>
-              <div className={styles.stepNum}>2</div>
-              <div className={styles.stepIllo}>
-                <div className={styles.chatIllo}>
-                  <div className={styles.bubbleL}>今日どうだった？</div>
-                  <div className={styles.bubbleR}>ちょっと疲れたかも…</div>
-                  <div className={styles.bubbleL}>何があったの？</div>
-                  <div className={styles.bubbleR}>会議が多くて…</div>
-                </div>
-              </div>
-              <h3>ぼやく・話す</h3>
-              <p>愚痴でも、うれしかったことでも。AIが優しく聞いて、ちょうどいい質問を返してくれる。</p>
-            </div>
-            <div className={styles.step}>
-              <div className={styles.stepNum}>3</div>
-              <div className={styles.stepIllo}>
-                <div className={styles.book}>
-                  5/20 (水)
-                  <div className={styles.blines}>
-                    <i></i><i></i><i></i><i></i>
-                  </div>
-                </div>
-              </div>
-              <h3>日記が完成</h3>
-              <p>会話から、その日の出来事と気持ちが自動で日記化。後から読み返すのも楽しみに。</p>
-            </div>
-          </div>
-        </div>
+      <section className={styles.sectionTint} id="companions">
+      <div className={styles.wrap}>
+      <p className={styles.eyebrow}>MEET YOUR COMPANION</p>
+      <h2>今日の気分で、<span className={styles.marker}>話す相手を。</span>
+      </h2>
+      <p className={styles.intro}>聞き方も、言葉の温度も、少しずつ違う3人。<br />今のあなたに合う相棒と、話してみませんか。</p>
+      <div className={styles.characters}>{companions.map(c => <article key={c.id} className={styles.character} data-character={c.id}>
+      <Image src={c.image} alt={`${c.name}の水彩イラスト`} width={144} height={144} />
+      <p className={styles.small}>{c.tag}</p>
+      <h3>{c.name}</h3>
+      <p>{c.description}</p>
+      <blockquote>
+      <span className={styles.small}>会話のイメージ</span>
+      <p>「今日は疲れたけど、ごはんは作れた」</p>
+      <p>「{c.reply}」</p>
+      </blockquote>
+      </article>)}</div>
+      </div>
       </section>
-
-      {/* Characters */}
-      <section className={styles.sec}>
-        <div className={styles.wrap}>
-          <span className={styles.secEyebrow}>YOUR AI PARTNER</span>
-          <h2 className={styles.secTitle}>
-            今日の気分で、<span className={styles.hl}>話し相手を選ぶ。</span>
-          </h2>
-          <p className={styles.secSub}>
-            3体のAIキャラクターは、それぞれ得意な聞き方が違います。今日のあなたに合うパートナーを。
-          </p>
-
-          <div className={styles.chars}>
-            <div className={`${styles.char} ${styles.charC1}`}>
-              <div className={styles.charTag}>ポジティブ</div>
-              <div className={`${styles.charFace} ${styles.charFaceC1}`}>
-                <Image src={penguImage} alt="ぺんまる" width={64} height={64} />
-              </div>
-              <h3>ぺんまる</h3>
-              <div className={styles.role}>小さな成功を見つける係</div>
-              <p className={styles.desc}>
-                「今日できたこと」にフォーカス。ポジティブ心理学ベースで、当たり前の中にある成長の芽をそっと拾い上げてくれます。
-              </p>
-              <div className={styles.charQuote}>
-                <span className={styles.quoteLabel}>ぺんまる</span>
-                今日、誰かのために動けた瞬間ってあった？
-              </div>
-            </div>
-
-            <div className={`${styles.char} ${styles.charC2}`}>
-              <div className={styles.charTag}>自己分析</div>
-              <div className={`${styles.charFace} ${styles.charFaceC2}`}>
-                <Image src={hooImage} alt="ホー博士" width={64} height={64} />
-              </div>
-              <h3>ホー博士</h3>
-              <div className={styles.role}>自分で気づきを引き出してくれる係</div>
-              <p className={styles.desc}>
-                知的で落ち着いた問いで、自分では気づかなかった学びを引き出してくれる。「なぜそう感じたか」をじっくり整理したい日に。
-              </p>
-              <div className={styles.charQuote}>
-                <span className={styles.quoteLabel}>ホー博士</span>
-                そのミス、自分ではどのあたりが原因だったと思いますか？
-              </div>
-            </div>
-
-            <div className={`${styles.char} ${styles.charC3}`}>
-              <div className={styles.charTag}>リラックス</div>
-              <div className={`${styles.charFace} ${styles.charFaceC3}`}>
-                <Image src={tetoImage} alt="テト" width={64} height={64} />
-              </div>
-              <h3>テト</h3>
-              <div className={styles.role}>力を抜かせてくれる係</div>
-              <p className={styles.desc}>
-                「まあなんとかなるよ」って力を抜かせてくれるネコ。悩みを深刻に考えすぎず、人生の長い目線でふっと楽にしてくれます。
-              </p>
-              <div className={styles.charQuote}>
-                <span className={styles.quoteLabel}>テト</span>
-                そんなに気にしなくてもいいんじゃない？人生長いんだからさ🐱
-              </div>
-            </div>
-          </div>
-        </div>
+      <section className={`${styles.wrap} ${styles.section}`}>
+      <p className={styles.eyebrow}>HOW IT WORKS</p>
+      <h2>書き出せない日も、<br />
+      <span className={styles.marker}>会話からでいい。</span>
+      </h2>
+      <ol className={styles.steps}>{[{ title: "相棒を選ぶ", body: "元気がほしい日も、静かに話したい日も。今日の気分に合わせて。", sample: "ぺんまる・ホー博士・テト" }, { title: "今日のことを話す", body: "まとまっていなくても大丈夫。思いついたことを、言葉にしてみる。", sample: "「今日はちょっと疲れたな」" }, { title: "日記になる", body: "会話をもとにAIが日記を生成。何気ない一日が、読み返せる記録に。", sample: "今日の気持ちを、一日分の記録へ。" }].map((s, i) => <li key={s.title}>
+      <span className={styles.stepNumber}>0{i + 1}</span>
+      <h3>{s.title}</h3>
+      <p>{s.body}</p>
+      <div className={styles.stepSample}>{s.sample}</div>
+      </li>)}</ol>
       </section>
-
-      {/* Features */}
-      <section className={styles.featuresBg}>
-        <div className={styles.sec}>
-          <div className={styles.wrap}>
-            <span className={`${styles.secEyebrow} ${styles.eyebrowLight}`}>FEATURES</span>
-            <h2 className={`${styles.secTitle} ${styles.titleLight}`}>
-              続けるための、<span className={styles.hlDark}>小さな仕掛け。</span>
-            </h2>
-            <p className={`${styles.secSub} ${styles.subLight}`}>
-              「書く」ハードルをなくして、毎日ひらきたくなる日記アプリを目指しました。
-            </p>
-
-            <div className={styles.feats}>
-              <div className={styles.feat}>
-                <div className={styles.featIcon}>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                    <path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.4-4 8-9 8a9.9 9.9 0 01-4-.8L3 21l1.8-5A8 8 0 013 12c0-4.4 4-8 9-8s9 3.6 9 8z" />
-                  </svg>
-                </div>
-                <h4>話すだけ</h4>
-                <p>白紙を埋める必要はゼロ。会話の流れにのって、自然と1日が言葉になる。</p>
-              </div>
-              <div className={styles.feat}>
-                <div className={styles.featIcon}>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                    <path d="M12 21s-7-4.5-7-10a5 5 0 019-3 5 5 0 019 3c0 5.5-7 10-7 10z" />
-                  </svg>
-                </div>
-                <h4>共感AI</h4>
-                <p>否定しない、急かさない。ぼやきを丁寧に受け止めるAIだから、本音が出やすい。</p>
-              </div>
-              <div className={styles.feat}>
-                <div className={styles.featIcon}>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                    <rect x="3" y="4" width="18" height="18" rx="2" />
-                    <path d="M16 2v4M8 2v4M3 10h18" />
-                  </svg>
-                </div>
-                <h4>カレンダー振り返り</h4>
-                <p>その日の気分とハイライトが一目で。1ヶ月の自分が、グラデーションで見える。</p>
-              </div>
-              <div className={styles.feat}>
-                <div className={styles.featIcon}>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                    <rect x="5" y="11" width="14" height="10" rx="2" />
-                    <path d="M8 11V7a4 4 0 018 0v4" />
-                  </svg>
-                </div>
-                <h4>あなただけの記録</h4>
-                <p>会話と日記はあなたの端末で守られた状態に。安心してぼやける場所を。</p>
-              </div>
-            </div>
-          </div>
-        </div>
+      <section className={styles.sectionTint} id="weekly">
+      <div className={`${styles.wrap} ${styles.featureGrid}`}>
+      <div>
+      <p className={styles.eyebrow}>WEEKLY REFLECTION</p>
+      <h2>今週の自分に、<br />
+      <span className={styles.marker}>気づける。</span>
+      </h2>
+      <p className={styles.lede}>一日ずつでは見えなかったことが、<br />一週間をふりかえると、見えてくる。</p>
+      <p>日記をもとに、1週間のふりかえりを。<br />心に残った出来事や気持ちを読み返して、<br />今週の自分に目を向ける時間をつくれます。</p>
+      </div>
+      <figure className={styles.paper}>
+      <p className={styles.eyebrow}>1週間のふりかえり</p>
+      <h3>あわただしい中にも、<br />ほっとする時間があった。</h3>
+      <div className={styles.week} aria-label="月曜日から日曜日までの1週間">{["月", "火", "水", "木", "金", "土", "日"].map(d => <span key={d}>{d}</span>)}</div>
+      <p>忙しい日が続いた今週。ごはんを作った夜や、散歩した休日には、少し肩の力が抜けたようです。</p>
+      <hr />
+      <p>
+      <strong>来週の自分へ</strong>
+      <br />小さな休憩も、大切にしてみよう。</p>
+      <figcaption className={styles.caption}>機能紹介のためのイメージ・文章はサンプルです。</figcaption>
+      </figure>
+      </div>
       </section>
-
-      {/* Final CTA */}
-      <section className={`${styles.final} ${styles.wrap}`}>
-        <div className={`${styles.finalDeco} ${styles.fd1}`}>✏️</div>
-        <div className={`${styles.finalDeco} ${styles.fd2}`}>💬</div>
-        <div className={`${styles.finalDeco} ${styles.fd3}`}>🌙</div>
-        <div className={`${styles.finalDeco} ${styles.fd4}`}>📔</div>
-        <h2>
-          今日のぼやきは、<br />
-          <span className={styles.hl}>日記になる。</span>
-        </h2>
-        <p>iPhoneで無料ダウンロード。今夜から、はじめてみる？</p>
-        <div className={`${styles.ctaRow} ${styles.ctaCenter}`}>
-          <a className={styles.appBadge} href="https://apps.apple.com/app/%E3%81%BC%E3%82%84%E3%81%8D%E6%97%A5%E8%A8%98/id6773559912" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 384 512" fill="currentColor">
-              <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
-            </svg>
-            <div>
-              <span className={styles.badgeB1}>Download on the</span>
-              <span className={styles.badgeB2}>App Store</span>
-            </div>
-          </a>
-        </div>
+      <section className={`${styles.wrap} ${styles.featureGrid} ${styles.section}`} id="memory">
+      <div>
+      <p className={styles.eyebrow}>MEMORY NOTE</p>
+      <h2>あなたのことを、<br />
+      <span className={styles.marker}>少しずつ。</span>
+      </h2>
+      <p className={styles.lede}>何気なく話した、好きなこと。<br />大事にしている、あの時間。</p>
+      <p>日記や会話から作られる「記憶」をもとに、相棒が過去の出来事を踏まえて応答します。</p>
+      <p className={styles.notice}>記憶の内容の確認・削除は、現在お問い合わせで受け付けています。アプリ内での個別の確認・削除は提供予定です。<br />
+      <Link className={styles.textLink} href="/support">記憶について問い合わせる ↗</Link>
+      </p>
+      <Link className={styles.textLink} href="/privacy">データの取り扱いについて →</Link>
+      </div>
+      <figure className={styles.paper}>
+      <p className={styles.eyebrow}>記憶ノートのイメージ</p>
+      <h3>会話の中の、あなたらしさ。</h3>
+      <div className={styles.noteItem}>
+      <span className={styles.small}>好きなこと</span>
+      <p>休日に、近所を散歩すること。</p>
+      </div>
+      <div className={styles.noteItem}>
+      <span className={styles.small}>大切にしていること</span>
+      <p>忙しくても、ごはんの時間はゆっくり。</p>
+      </div>
+      <figcaption className={styles.caption}>紹介用イメージです。実際の画面ではありません。<br />AIが作る記憶には、誤りが含まれる場合があります。</figcaption>
+      </figure>
       </section>
-
-      {/* Footer */}
+      <section className={styles.sectionTint}>
+      <div className={`${styles.wrap} ${styles.catchUp}`}>
+      <span className={styles.stepNumber} aria-hidden="true">＋</span>
+      <div>
+      <h2>書きそびれた日も、<span className={styles.marker}>あとから。</span>
+      </h2>
+      <p>毎日きっちり、でなくても大丈夫。書きそびれた日のことも、思い出したときに記入できます。</p>
+      </div>
+      </div>
+      </section>
+      <section className={`${styles.wrap} ${styles.section} ${styles.faq}`}>
+      <p className={styles.eyebrow}>Q & A</p>
+      <h2>気になること。</h2>{[{ q: "無料で使えますか？", a: <>無料でダウンロードできます。AIとの対話にはチケットを使用し、チケットはアプリ内でも購入できます。枚数・価格はアプリ内の購入画面でご確認ください。</> }, { q: "日記は自分で書かないといけませんか？", a: <>相棒との会話をもとにAIが日記を生成します。文章をきれいにまとめる必要はありません。</> }, { q: "相棒は人間ですか？", a: <>3人ともAIキャラクターです。返答や日記はAIが生成するため、誤りが含まれる場合があります。</> }, { q: "記憶の内容を確認・削除できますか？", a: <>現在は<Link href="/support">お問い合わせ</Link>で確認・削除に対応しています。アプリ内での個別の確認・削除は提供予定です。</> }, { q: "会話や日記のデータはどう扱われますか？", a: <>AI機能の利用に際して、同意のうえで会話内容などを外部AIサービスへ送信します。詳しくは<Link href="/privacy">プライバシーポリシー</Link>をご確認ください。</> }].map(item => <details key={item.q}>
+      <summary>{item.q}</summary>
+      <p>{item.a}</p>
+      </details>)}<Link className={styles.textLink} href="/faq">すべてのFAQを見る →</Link>
+      </section>
+      <section className={styles.download} id="download">
+      <div className={styles.wrap}>
+      <div className={styles.downloadCharacters}>{companions.map(c => <Image key={c.id} src={c.image} alt="" width={88} height={88} />)}</div>
+      <h2>今日のぼやきが、<br />
+      <span className={styles.marker}>明日の思い出に。</span>
+      </h2>
+      <p>あなたの話を待っている相棒がいます。</p>
+      <StoreLink />
+      <p className={styles.small}>iPhone向け ／ 無料ダウンロード・アプリ内課金あり<br />チケットの内容・価格は、アプリ内の購入画面をご確認ください。</p>
+      </div>
+      </section>
+    </main>
       <footer className={styles.footer}>
-        <div className={`${styles.wrap} ${styles.footInner}`}>
-          <div className={styles.brand}>
-            <div className={styles.brandMark}>ぼ</div>
-            <div className={styles.brandName}>
-              ぼやき日記
-            </div>
-          </div>
-          <div className={styles.footLinks}>
-            <a href="/terms">利用規約</a>
-            <a href="/privacy">プライバシーポリシー</a>
-            <a href="/faq">Q&A</a>
-            <a href="/support">お問い合わせ</a>
-          </div>
-          <div>© 2026 ぼやき日記</div>
-        </div>
+      <div className={styles.wrap}>
+      <Brand />
+      <nav aria-label="フッターナビゲーション">
+      <Link href="/support">お問い合わせ</Link>
+      <Link href="/terms">利用規約</Link>
+      <Link href="/privacy">プライバシーポリシー</Link>
+      <Link href="/faq">FAQ</Link>
+      </nav>
+      <p className={styles.small}>© ぼやき日記 / TalkDiary</p>
+      </div>
       </footer>
-    </>
-  );
+  </>;
 }

@@ -13,11 +13,11 @@ const BASE_URL = "https://www.boyaki-diary.com";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "ぼやき日記 — ぼやいてたら、日記になってた。",
+    default: "ぼやき日記 — ぼやくだけで、日記になる。",
     template: "%s | ぼやき日記",
   },
   description:
-    "AIキャラクターと話すだけで、日記が自動生成される対話型日記アプリ。書く意志がなくても続けられる。",
+    "3人のAIの相棒との会話を日記に。週間振り返りと記憶ノートで、自分のことを少しずつ。無料ダウンロード・アプリ内課金あり。",
   keywords: [
     "日記アプリ",
     "AI日記",
@@ -37,23 +37,23 @@ export const metadata: Metadata = {
     locale: "ja_JP",
     url: BASE_URL,
     siteName: "ぼやき日記",
-    title: "ぼやき日記 — ぼやいてたら、日記になってた。",
+    title: "ぼやき日記 — ぼやくだけで、日記になる。",
     description:
-      "AIキャラクターと話すだけで、日記が自動生成される対話型日記アプリ。書く意志がなくても続けられる。",
+      "3人のAIの相棒との会話を日記に。週間振り返りと記憶ノートで、自分のことを少しずつ。無料ダウンロード・アプリ内課金あり。",
     images: [
       {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "ぼやき日記 — ぼやいてたら、日記になってた。",
+        alt: "ぼやき日記 — ぼやくだけで、日記になる。",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "ぼやき日記 — ぼやいてたら、日記になってた。",
+    title: "ぼやき日記 — ぼやくだけで、日記になる。",
     description:
-      "AIキャラクターと話すだけで、日記が自動生成される対話型日記アプリ。書く意志がなくても続けられる。",
+      "3人のAIの相棒との会話を日記に。週間振り返りと記憶ノートで、自分のことを少しずつ。無料ダウンロード・アプリ内課金あり。",
     images: ["/opengraph-image"],
   },
 };

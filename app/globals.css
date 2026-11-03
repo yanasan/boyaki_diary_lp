@@ -114,7 +114,6 @@ body {
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-body-strong);
   line-height: var(--line-height-relaxed);
-  overflow-x: hidden;
 }
 
 a {
@@ -125,4 +124,13 @@ a {
 @keyframes float {
   0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
   50% { transform: translateY(-10px) rotate(var(--r, 0deg)); }
+}
+
+:where(a, button, summary, input, textarea, select):focus-visible {
+  outline: 2px solid var(--color-primary-300);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--color-neutral-900);
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }

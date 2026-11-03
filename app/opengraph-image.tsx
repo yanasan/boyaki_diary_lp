@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const size = { width: 1200, height: 630 };
+export const alt = "ぼやき日記 — ぼやくだけで、日記になる。3人の相棒・週間振り返り・記憶ノート";
 export const contentType = "image/png";
 
 export default function Image() {
@@ -8,7 +9,7 @@ export default function Image() {
     (
       <div
         style={{
-          background: "linear-gradient(135deg, #fdf6f0 0%, #f0e4d4 50%, #e8d5c0 100%)",
+          background: "#FAF5E9",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -25,13 +26,13 @@ export default function Image() {
             width: 96,
             height: 96,
             borderRadius: 24,
-            background: "linear-gradient(135deg, #f97316, #ea580c)",
+            background: "#14110D",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             fontSize: 52,
             fontWeight: 800,
-            color: "#fff",
+            color: "#FFD84D",
             marginBottom: 32,
           }}
         >
@@ -42,7 +43,7 @@ export default function Image() {
           style={{
             fontSize: 64,
             fontWeight: 800,
-            color: "#1a1a1a",
+            color: "#14110D",
             marginBottom: 16,
             letterSpacing: "-1px",
           }}
@@ -52,23 +53,24 @@ export default function Image() {
 
         <div
           style={{
-            fontSize: 34,
-            color: "#555",
+            fontSize: 42,
+            background: "linear-gradient(transparent 60%, #FFD84D 60%, #FFD84D 92%, transparent 92%)",
+            color: "#2A251E",
             marginBottom: 28,
           }}
         >
-          ぼやいてたら、日記になってた。
+          ぼやくだけで、日記になる。
         </div>
 
         <div
           style={{
             fontSize: 22,
-            color: "#888",
+            color: "#5C5343",
             textAlign: "center",
             maxWidth: 720,
           }}
         >
-          AIキャラクターと話すだけで日記が完成する、対話型日記アプリ
+          3人の相棒・週間振り返り・記憶ノート
         </div>
 
         {/* Characters */}
@@ -80,9 +82,7 @@ export default function Image() {
             fontSize: 44,
           }}
         >
-          <span>🐧</span>
-          <span>🦉</span>
-          <span>🐱</span>
+          <span style={{ fontSize: 22, color: "#2A251E" }}>ぺんまる ・ ホー博士 ・ テト</span>
         </div>
       </div>
     ),
