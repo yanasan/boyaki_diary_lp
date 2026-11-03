@@ -66,7 +66,7 @@ export default function PrivacyPolicy() {
                   </tr>
                   <tr>
                     <td>記憶データ</td>
-                    <td>日記の内容から作る、その日の要約・出来事・感情・日付つきの予定・登場人物・関心事</td>
+                    <td>日記・チャットの内容からAIが作る要約（その日の出来事・感情、日付のある予定、登場人物、繰り返し出てくる関心事）</td>
                     <td>日記生成時</td>
                   </tr>
                   <tr>
@@ -86,8 +86,8 @@ export default function PrivacyPolicy() {
                   </tr>
                   <tr>
                     <td>購入情報</td>
-                    <td>取引ID、商品ID（App Storeでの購入内容の確認に使用）</td>
-                    <td>購入時</td>
+                    <td>購入した商品、取引ID、購入日時、返金・取り消しの情報。クレジットカード番号などのお支払い情報はAppleが処理し、本アプリは取得しません</td>
+                    <td>チケット購入時</td>
                   </tr>
                   <tr>
                     <td>利用履歴</td>
@@ -120,10 +120,10 @@ export default function PrivacyPolicy() {
             <ul>
               <li>本アプリのサービス提供・運営</li>
               <li>AIによる日記の自動生成（詳細は「3. AIへのデータ送信について」参照）</li>
-              <li>日記から作る「記憶」を、AIキャラクターの返信に反映すること</li>
-              <li>人物像・週次サマリーの作成と、それらの日記生成・返信への反映</li>
+              <li>過去の日記の内容をAIが踏まえて応答するための、記憶の作成と利用</li>
+              <li>人物像・週次サマリーの作成と、それらの日記生成・応答への反映</li>
               <li>リマインド通知の配信</li>
-              <li>購入内容の確認</li>
+              <li>チケットの購入の処理、購入内容の確認、不正利用の防止</li>
               <li>アプリの利用状況分析およびサービス改善</li>
               <li>広告の配信</li>
               <li>不正利用の防止・セキュリティ確保</li>
@@ -152,14 +152,14 @@ export default function PrivacyPolicy() {
                     <td>AIキャラクターによる応答生成および日記の自動生成</td>
                   </tr>
                   <tr>
-                    <td>日記の内容（記憶の作成時）、および直近の日記から作った記憶の要約（返信時）</td>
+                    <td>日記・チャットの内容（記憶の作成）、および直近1週間の日記の要約（応答生成時に会話の文脈として添える）</td>
                     <td>Gemini API（Google LLC）</td>
-                    <td>日記と同時に記憶を作ること、および記憶を返信に反映すること</td>
+                    <td>過去の出来事を踏まえた応答の生成、記憶の作成</td>
                   </tr>
                   <tr>
                     <td>人物像の作成のためのアンケートの回答、作成した人物像の説明文</td>
                     <td>Gemini API（Google LLC）</td>
-                    <td>人物像の作成、および返信・日記生成・週次サマリーへの反映</td>
+                    <td>人物像の作成、および応答・日記生成・週次サマリーへの反映</td>
                   </tr>
                   <tr>
                     <td>1週間分の日記</td>
@@ -170,11 +170,11 @@ export default function PrivacyPolicy() {
               </table>
             </div>
             <ul>
-              <li>送信データはAI応答生成および日記生成の目的以外には使用しません</li>
+              <li>送信データはAI応答生成、日記生成、記憶の作成、人物像の作成、および週次サマリーの作成の目的以外には使用しません</li>
+              <li>日記を保存しなかった場合などに、前日の対話の内容から日記を自動で作成することがあります（この場合も、上記と同じ送信先・目的で送信します）</li>
               <li>Googleとの間で入力データをAIの学習に利用しない設定を適用しています</li>
               <li>送信時に氏名・住所・電話番号など直接個人を特定する情報は付加しません</li>
               <li>利用者が会話内に個人情報を入力した場合、その内容は上記の送信データに含まれる可能性があります</li>
-              <li>日記を保存しなかった場合などに、前日の対話の内容から日記を自動で作成することがあります（この場合も、上記と同じ送信先・目的で送信します）</li>
               <li>同意しない場合、AIキャラクターとの対話および日記生成機能は利用できません</li>
             </ul>
           </section>
@@ -212,14 +212,14 @@ export default function PrivacyPolicy() {
                     <td>AI対話・日記生成</td>
                   </tr>
                   <tr>
+                    <td>App Store / Apple ID</td>
+                    <td>Apple Inc.</td>
+                    <td>チケット購入の決済、購入情報の検証、Appleでサインイン</td>
+                  </tr>
+                  <tr>
                     <td>Google AdMob</td>
                     <td>Google LLC</td>
                     <td>広告配信</td>
-                  </tr>
-                  <tr>
-                    <td>App Store</td>
-                    <td>Apple Inc.</td>
-                    <td>購入内容の確認</td>
                   </tr>
                 </tbody>
               </table>
@@ -232,10 +232,11 @@ export default function PrivacyPolicy() {
             <ul>
               <li>チャット履歴は最終利用日から<strong>7日間</strong>保持後、自動削除されます</li>
               <li>日記データはアプリ利用期間中保持されます</li>
-              <li>日記から作った記憶は、記憶ノートでいつでも確認・削除できます。削除した記憶は、以降の返信には使われません</li>
-              <li>退会時、またはゲストデータの削除時には、日記・記憶・人物像などの利用者のデータもあわせて削除されます</li>
               <li>アプリをアンインストールした場合、または削除依頼をいただいた場合、サーバー上のデータは<strong>30日以内に完全削除</strong>されます</li>
               <li>個別データの削除はアプリ内の設定画面から随時行えます</li>
+              <li>記憶データは、日記や会話のデータと同じく、アカウントを削除したときにすべて削除されます</li>
+              <li>記憶データの個別の確認・削除は、アプリ内の機能として提供を予定しています。提供までの間は、下記お問い合わせ先にご連絡いただければ、確認・削除に対応します</li>
+              <li>購入情報（購入した商品、取引ID、購入日時など）は、購入内容の確認、返金・取り消しの反映、不正利用の防止のために保持します。アカウントを削除した後も、必要な範囲で保持することがあります</li>
             </ul>
           </section>
 
@@ -268,7 +269,7 @@ export default function PrivacyPolicy() {
             <div className={styles.rights}>
               <div className={styles.right}>
                 <span className={styles.rightLabel}>閲覧</span>
-                アプリ内のタイムライン・詳細画面、記憶ノートから確認可能
+                アプリ内のタイムライン・詳細画面から確認可能
               </div>
               <div className={styles.right}>
                 <span className={styles.rightLabel}>訂正</span>
@@ -276,11 +277,11 @@ export default function PrivacyPolicy() {
               </div>
               <div className={styles.right}>
                 <span className={styles.rightLabel}>削除</span>
-                アプリ内設定画面から個別削除・全データ削除が可能（記憶は記憶ノートから削除可能）
+                アプリ内設定画面から個別削除・全データ削除が可能
               </div>
               <div className={styles.right}>
                 <span className={styles.rightLabel}>開示・利用停止等</span>
-                下記お問い合わせ先まで
+                記憶データ・購入情報を含め、下記お問い合わせ先まで
               </div>
             </div>
           </section>
